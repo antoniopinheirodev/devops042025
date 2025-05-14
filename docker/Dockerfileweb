@@ -1,0 +1,19 @@
+FROM debian:11-slim
+
+LABEL maintainer="Antonio Carlos Pinheiro antonio.pinheiro@asf.com"
+ENV PORT=80
+
+# RUN -> na criacao da imagem
+RUN apt update && apt install apache2 php php7.4-mysql -y && a2enmod php7.4
+
+# Remova o arquivo index.html padrão
+RUN rm -f /var/www/html/index.html
+
+COPY ./web/ /var/www/html
+
+EXPOSE $PORT
+
+WORKDIR /etc/apache2
+
+# CMD -> na criacao do container
+CMD ["apachectl", "-D", "FOREGROUND"]

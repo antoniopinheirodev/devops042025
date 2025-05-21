@@ -3,7 +3,7 @@ services:
   nginx:
     build:
        dockerfile: ./Dockerfilenginx
-       context: .
+       context: ./docker
     image: antoniopinheirokaizen/nginx:1.0
     container_name: nginx
     ports:
@@ -17,7 +17,7 @@ services:
   db:
     build:
       dockerfile: ./Dockerfiledb
-      context: .
+      context: ./docker
     image: antoniopinheirokaizen/db
     container_name: db
     networks:
@@ -28,7 +28,7 @@ services:
   web1:
     build:
        dockerfile: ./Dockerfileweb
-       context: .
+       context: ./docker
     image: antoniopinheirokaizen/web
     container_name: web1
     ports:
